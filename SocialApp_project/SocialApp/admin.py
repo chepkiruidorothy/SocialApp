@@ -60,8 +60,8 @@ class   PostAdmin(admin.ModelAdmin):
     list_display = ( "title","author_link","details","date")
 
 
-    def author_link(self, SocialApp):
-        url = reverse("admin:SocialApp_author_change", args=[SocialApp.author.id])
-        link = '<a href="%s">%s</a>' % (url, SocialApp.author.first_name)
+    def author_link(self, obj):
+        url = reverse("admin:SocialApp_author_change", args=[obj.author.id])
+        link = '<a href="%s">%s</a>' % (url, obj.author.first_name)
         return mark_safe(link)
     author_link.short_description = 'Author'
